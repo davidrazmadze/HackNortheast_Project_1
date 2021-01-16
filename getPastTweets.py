@@ -19,7 +19,7 @@ class tweety(tweepy.StreamListener):
         follower = follower1        # follower count of user who posted tweet
 
 ticker = input("Enter Stock Ticker: ")
-numTweet = 5
+numTweet = 6
 global tick
 with open('HackNortheast_Project_1\\t2n.txt') as file:
     for line in file:
