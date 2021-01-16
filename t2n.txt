@@ -1,5 +1,5 @@
-AAPL OR Apple OR apple -filter:retweets
-GOOG OR Google OR google -filter:retweets
-MSFT OR Microsoft OR microsoft -filter:retweets
-NIO OR Nio Inc OR Nio -filter:retweets
-TSLA OR Tesla -filter:retweets
+AAPL OR Apple OR apple
+GOOG OR Google OR google
+MSFT OR Microsoft OR microsoft
+NIO OR Nio Inc OR Nio
+TSLA OR Tesla
