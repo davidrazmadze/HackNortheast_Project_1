@@ -1,0 +1,66 @@
+{
+  "id_str": "593891099434983425",
+  "created_at": "Thu Apr 30 21:34:06 +0000 2015",
+  "favorite_count": 0,
+  "retweeted_status": {
+    "id_str": "593885295323521025",
+    "created_at": "Thu Apr 30 21:11:02 +0000 2015",
+    "favorite_count": 3,
+    "id": 593885295323521025,
+    "text": "Indirect cost of the UK being in the EU is estimated to be costing Britain \u00a3170 billion per year! #BetterOffOut #UKIP",
+    "lang": "en",
+    "retweet_count": 11,
+    "user": {
+      "statuses_count": 4589,
+      "id_str": "929903647",
+      "screen_name": "KirkKus",
+      "id": 929903647,
+      "name": "Kirk Kus",
+      "friends_count": 2678,
+      "lang": "en"
+    },
+    "entities": {
+      "symbols": [],
+      "trends": [],
+      "user_mentions": [],
+      "urls": [],
+      "hashtags": [
+        { "indices": [98, 111], "text": "BetterOffOut" },
+        { "indices": [112, 117], "text": "UKIP" }
+      ]
+    }
+  },
+  "id": 593891099434983425,
+  "text": "RT @KirkKus: Indirect cost of the UK being in the EU is estimated to be costing Britain \u00a3170 billion per year! #BetterOffOut #UKIP",
+  "retweet_count": 0,
+  "timestamp_ms": "1430429646725",
+  "user": {
+    "statuses_count": 74617,
+    "id_str": "107794703",
+    "followers_count": 804,
+    "listed_count": 43,
+    "geo_enabled": true,
+    "created_at": "Sat Jan 23 19:23:32 +0000 2010",
+    "screen_name": "vienesewaltz",
+    "id": 107794703,
+    "lang": "en"
+  },
+  "entities": {
+    "symbols": [],
+    "trends": [],
+    "user_mentions": [
+      {
+        "screen_name": "KirkKus",
+        "name": "Kirk Kus",
+        "indices": [3, 11],
+        "id": 929903647,
+        "id_str": "929903647"
+      }
+    ],
+    "urls": [],
+    "hashtags": [
+      { "indices": [111, 124], "text": "BetterOffOut" },
+      { "indices": [125, 130], "text": "UKIP" }
+    ]
+  }
+}
