@@ -1,3 +1,4 @@
+import json
 import string
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
@@ -7,16 +8,11 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 def sentiment_analyse(sentiment_text):
     score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
-    if score['neg'] > score['pos']:
-        print("Negative Sentiment")
-    elif score['neg'] < score['pos']:
-        print("Positive Sentiment")
-    else:
-        print("Neutral Sentiment")
+    return score
 
 
 # 1. Open text file
-text = open('read.txt', encoding='utf-8').read()
+text = open('sentiment_example.txt', encoding='utf-8').read()
 lower_case = text.lower()
 cleaned_text = lower_case.translate(str.maketrans('', '', string.punctuation))
 
@@ -36,4 +32,20 @@ for word in final_words:
     lemma_words.append(word)
 
 # 5. Print out if word is positive or negative
-sentiment_analyse(cleaned_text)
+# sentiment_analyse(cleaned_text)
+
+with open('tweets.json') as f:
+    data = json.load(f)
+
+    # Iterate over each object in json file
+    for item in data:
+        text = item['text']
+        followers_count = item['followers_count']
+        likes = item['likes']
+        retweet_count = item['retweet_count']
+
+        print(sentiment_analyse(text))
+        print("followers: " + str(followers_count))
+        print("likes: " + str(likes))
+        print("retweet: " + str(retweet_count))
+        print("\n")
