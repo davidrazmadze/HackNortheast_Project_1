@@ -20,8 +20,8 @@ Performs sentiment analysis on a tweets involving stocks to inform user whether 
 
 - stop_words
 
-
 ### How to install nltk datasets/packages
+
 ```
 raz@Davids-MacBook-Pro ~ % python3
 >>> import nltk
