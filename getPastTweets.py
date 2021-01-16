@@ -1,5 +1,6 @@
 import tweepy
 import time
+import datetime
 import os
 import json
 import sys
@@ -20,9 +21,12 @@ def get_relevant_tweets(ticker, number_of_tweets):
         for line in file:
             if ticker in line:
                 tick = line
+                yesterday  = datetime.datetime.now() - datetime.timedelta(days = 1)
+                tick = tick.strip('\n') + f'-filter:retweets' + f' since:{yesterday.strftime("%Y-%m-%d")}'
+                print(tick)
     for tweet in tweepy.Cursor(api.search, q=tick, lang='en').items(number_of_tweets):
         try:
-            #print(f"Tweet received; Text: \n{tweet.text} ---- {tweet.user.screen_name}")
+            print(f"Tweet received; Text: \n{tweet.text} ---- {tweet.user.screen_name} ---- {tweet.created_at}")
             tweet_list.append(tweet)
         except tweepy.error.TweepError as er:
             print(er.reason)
