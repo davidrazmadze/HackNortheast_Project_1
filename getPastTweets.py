@@ -5,7 +5,6 @@ from keys import consumer_key
 from keys import consumer_secret
 from keys import key
 from keys import secret
-import ticker2name
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
@@ -18,21 +17,20 @@ class tweety(tweepy.StreamListener):
         retweets = retweets1        # number of retweets it has
         user = user1                # username of tweeter
         follower = follower1        # follower count of user who posted tweet
-os.listdir()
+
 ticker = input("Enter Stock Ticker: ")
 numTweet = 5
 global tick
-with open('HackNortheast_Project_1\\ticker2name.py') as file:
-    contents = file.read()
-    if ticker in contents:
-        print(f'{ticker} FOUND')
-        tick = contents
-        print(f'{tick} LIST')
-    else:
-        print(f'NOT FOUND')
+with open('HackNortheast_Project_1\\t2n.txt') as file:
+    for line in file:
+        if ticker in line:
+            print(f'{ticker} FOUND')
+            tick = line
+
+print("===================")
 for tweet in tweepy.Cursor(api.search, q=tick, lang='en').items(numTweet):
     try:
-        print(f"Tweet received; Text: \n{tweet.text}\n{tweet.user.screen_name}")
+        print(f"Tweet received; Text: \n{tweet.text} ---- {tweet.user.screen_name}")
         if ticker in tweet.text:
             print(f"{ticker} FOUND")
     except tweepy.error.TweepError as er:
