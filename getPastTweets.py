@@ -13,8 +13,9 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
+
 def get_relevant_tweets(ticker, number_of_tweets):
-    tweet_list = [] # list to hold tweets fetched
+    tweet_list = []  # list to hold tweets fetched
     global tick
     with open('HackNortheast_Project_1\\t2n.txt') as file:
         for line in file:
@@ -32,6 +33,8 @@ def get_relevant_tweets(ticker, number_of_tweets):
         except StopIteration:
             break
     return tweet_list
+
+
 def store_tweets_in_json(passed_tweet_list, file):
     tweet_list = []
     for tweet in passed_tweet_list:
@@ -44,12 +47,14 @@ def store_tweets_in_json(passed_tweet_list, file):
         tweet_info['followers_count'] = tweet.user.followers_count
         tweet_list.append(tweet_info)
     file_to_open = open(file, 'w')
-    json.dump(tweet_list, file_to_open, indent = 4, sort_keys=True)
+    json.dump(tweet_list, file_to_open, indent=4, sort_keys=True)
     file_to_open.flush()
     file_to_open.close()
+
 
 if __name__ == '__main__':
     ticker = input("Enter stock ticker OR company name: ")
     tweets_to_open = int(input("How many tweets would you like to retrieve?"))
     alltweets = get_relevant_tweets(ticker, tweets_to_open)
-    store_tweets_in_json(alltweets, 'HackNortheast_Project_1\\relevant_tweets.json')
+    store_tweets_in_json(
+        alltweets, 'HackNortheast_Project_1\\relevant_tweets.json')
