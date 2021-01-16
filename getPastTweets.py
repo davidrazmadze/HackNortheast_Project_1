@@ -48,4 +48,4 @@ if __name__ == '__main__':
     ticker = input("Enter stock ticker OR company name: ")
     tweets_to_open = int(input("How many tweets would you like to retrieve?"))
     alltweets = get_relevant_tweets(ticker, tweets_to_open)
-    store_tweets_in_json(alltweets, 'relevant_tweets.json')
+    store_tweets_in_json(alltweets, 'HackNortheast_Project_1\\relevant_tweets.json')
