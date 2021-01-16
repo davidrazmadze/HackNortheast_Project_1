@@ -7,4 +7,4 @@ Performs sentiment analysis on a tweets involving stocks to inform user whether 
 ## Requirements
 
 - Python3
-- (http://www.nltk.org)[nltk]
+- [nltk](http://www.nltk.org)
