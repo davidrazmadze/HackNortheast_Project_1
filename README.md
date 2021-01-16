@@ -6,6 +6,14 @@ Performs sentiment analysis on a tweets involving stocks to inform user whether 
 
 ## [nltk](http://www.nltk.org)
 
+### List of nltk packages
+
+twitter_samples
+punkt
+wordnet
+averaged_perceptron_tagger
+pos_tag
+
 How to install nltk datasets/packages
 ```
 raz@Davids-MacBook-Pro ~ % python3
