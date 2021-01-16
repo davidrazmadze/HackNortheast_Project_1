@@ -1,0 +1,1 @@
+AAPL = ['AAPL', 'Apple']
