@@ -1,5 +1,5 @@
-# HackNortheast_Project_1
-[Project 1]
-This is a change I made - Ben
+# Hack the Northeast - Sentiment Analysis of Tweets based on Stock
 
-David made a change here.
+## Description of project
+
+Performs sentiment analysis on a tweets involving stocks to inform user whether to buy, hold, or sell a particular stock.
