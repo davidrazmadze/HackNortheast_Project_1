@@ -10,14 +10,6 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-class tweety(tweepy.StreamListener):
-    def __init__(self, text1, likes1, retweets1, user1, follower1):
-        text = text1                # text of tweet
-        likes = likes1              # number of likes tweet has
-        retweets = retweets1        # number of retweets it has
-        user = user1                # username of tweeter
-        follower = follower1        # follower count of user who posted tweet
-
 ticker = input("Enter Stock Ticker: ")
 numTweet = 6
 global tick
