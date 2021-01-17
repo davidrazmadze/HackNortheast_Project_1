@@ -11,8 +11,7 @@ from keys import secret
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
-
-global x
+time_end = time.time() + 8
 class MyStream(tweepy.StreamListener):
     def on_status(self, status):
         tweet_live = []
@@ -23,6 +22,8 @@ class MyStream(tweepy.StreamListener):
         print(status.user.followers_count)
         print(status.favorite_count)
         print(status.retweet_count)
+        if time_end == time.time():
+            return False
 
     def on_error(self, error):
         print(error)
@@ -43,7 +44,7 @@ def store_last_tweet_in_json(passed_tweet_list):
     file_to_open.flush()
     file_to_open.close()
 
-if __name__ == '__main__':
+def get_live_tweets(control_ticker):
     mstream = MyStream()
     myStreamListen = tweepy.Stream(auth = api.auth, listener = mstream)
-    myStreamListen.filter(follow=["1292952619611295763"])
+    myStreamListen.filter(track=[f'{control_ticker}'])
