@@ -13,16 +13,15 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-
-def get_relevant_tweets(ticker, number_of_tweets):
+def get_relevant_tweets(ticker, number_of_tweets, days_ago):
     tweet_list = []  # list to hold tweets fetched
     global tick
     with open('HackNortheast_Project_1\\t2n.txt') as file:
         for line in file:
             if ticker in line:
                 tick = line
-                yesterday  = datetime.datetime.now() - datetime.timedelta(days = 1)
-                tick = tick.strip('\n') + f'-filter:retweets' + f' since:{yesterday.strftime("%Y-%m-%d")}'
+                yesterday  = datetime.datetime.now() - datetime.timedelta(days = days_ago)
+                tick = tick.strip('\n') + f' -filter:retweets' + f' since:{yesterday.strftime("%Y-%m-%d")}'
                 print(tick)
     for tweet in tweepy.Cursor(api.search, q=tick, lang='en').items(number_of_tweets):
         try:
@@ -33,7 +32,6 @@ def get_relevant_tweets(ticker, number_of_tweets):
         except StopIteration:
             break
     return tweet_list
-
 
 def store_tweets_in_json(passed_tweet_list, file):
     tweet_list = []
@@ -51,10 +49,8 @@ def store_tweets_in_json(passed_tweet_list, file):
     file_to_open.flush()
     file_to_open.close()
 
-
-if __name__ == '__main__':
-    ticker = input("Enter stock ticker OR company name: ")
-    tweets_to_open = int(input("How many tweets would you like to retrieve?"))
-    alltweets = get_relevant_tweets(ticker, tweets_to_open)
-    store_tweets_in_json(
-        alltweets, 'HackNortheast_Project_1\\relevant_tweets.json')
+def get_past_tweets(control_ticker):
+    tweets_to_open = int(input("How many tweets would you like to retrieve? "))
+    days_past = int(input("What is the age limit of the tweets in days? "))
+    alltweets = get_relevant_tweets(control_ticker, tweets_to_open, days_past)
+    store_tweets_in_json(alltweets, 'HackNortheast_Project_1\\relevant_tweets.json')
