@@ -1,5 +1,0 @@
-AAPL OR Apple OR apple
-GOOG OR Google OR google
-MSFT OR Microsoft OR microsoft
-NIO OR Nio Inc OR Nio
-TSLA OR Tesla
