@@ -1,3 +1,54 @@
-* {
-  font-family: sans-serif;
+body {
+  background-color: gray;
+  color: white;
+}
+
+#mainHeader {
+  background-color: black;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#mainContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#form input {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border-style: none;
+}
+
+input[type="radio"] {
+  border: 0px;
+  width: 30px;
+  height: 2em;
+}
+
+#numDaysInput,
+#numTweetsInput {
+  display: inline;
+  width: 200px;
+}
+
+#percentResults {
+  width: 90%;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  border-style: none;
+}
+
+#percentage {
+  font-size: 32px;
+}
+
+#square {
+  font-size: 18px;
 }

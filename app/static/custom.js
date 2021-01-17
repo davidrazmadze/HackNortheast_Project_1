@@ -25,13 +25,23 @@ function submitFormPressed() {
       method: "POST",
       success: function (data) {
         $("#stockInput").val("");
-        var message =
-          "If percentage is 0-45,; Consider selling \
-          If percentage is 45-55%, Consider holding\
-          If stock is 55-100%, Consider Buying";
         percentageMessage = "Percentage: " + data["percentage"] + "%";
-        $("#square").html(message);
         $("#percentage").html(percentageMessage);
+
+        var percentageDouble = parseFloat(data["percentage"]);
+
+        console.log(percentageDouble);
+
+        if (percentageDouble >= 0 && percentageDouble < 45.0) {
+          $("#percentResults").css("background-color", "red");
+          $("#square").html("You should sell based on Twitter data.");
+        } else if (percentageDouble < 55.0) {
+          $("#percentResults").css("background-color", "gray");
+          $("#square").html("You should hold based on Twitter data.");
+        } else {
+          $("#percentResults").css("background-color", "green");
+          $("#square").html("You should buy based on Twitter data.");
+        }
       },
     });
   });
