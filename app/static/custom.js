@@ -1,3 +1,5 @@
+var isLive = true;
+
 $(document).ready(function () {
   submitFormPressed();
   displayAdditionalInputs();
@@ -7,15 +9,20 @@ $(document).ready(function () {
 
 function submitFormPressed() {
   $("#form").on("submit", function (e) {
-    var number = $("#num").val();
+    var stockName = $("#stockInput").val();
+    console.log(stockName);
     e.preventDefault();
     $.ajax({
       url: "http://127.0.0.1:5000/square/",
-      data: { number: number },
+      data: {
+        text: stockName,
+        isLive: isLive,
+      },
       method: "POST",
       success: function (data) {
-        $("#num").val("");
-        $("#square").html("Square of " + number + " is " + data["square"]);
+        $("#stockInput").val("");
+        console.log(data);
+        // $("#square").html("Square of " + number + " is " + data["square"]);
       },
     });
   });
@@ -27,9 +34,11 @@ function displayAdditionalInputs() {
     if ($("#isLive").is(":checked")) {
       $("#numTweetsInput").hide();
       $("#numDaysInput").hide();
+      isLive = true;
     } else {
       $("#numTweetsInput").show();
       $("#numDaysInput").show();
+      isLive = false;
     }
   });
 }
