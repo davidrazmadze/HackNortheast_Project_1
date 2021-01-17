@@ -25,7 +25,13 @@ function submitFormPressed() {
       method: "POST",
       success: function (data) {
         $("#stockInput").val("");
-        $("#square").html("Percentage: " + data["percentage"] + "%");
+        var message =
+          "If percentage is 0-45,; Consider selling \
+          If percentage is 45-55%, Consider holding\
+          If stock is 55-100%, Consider Buying";
+        percentageMessage = "Percentage: " + data["percentage"] + "%";
+        $("#square").html(message);
+        $("#percentage").html(percentageMessage);
       },
     });
   });
