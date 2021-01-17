@@ -14,10 +14,17 @@ def index():
 def square():
     stockName = request.form['text']
     isLive = request.form['isLive']
-    numTweetsInput = request.form['numTweetsInput']
-    numDaysInput = request.form['numDaysInput']
 
-    # num = float(request.form.get('number', 0))
+    if isLive == "true":
+        print("Now viewing live tweets:")
+        get_live_tweets(stockName)
+    else:
+        print("Past tweets")
+        tweets_to_open = request.form['numTweetsInput']
+        days_past = request.form['numDaysInput']
+        get_past_tweets(stockName, int(tweets_to_open), int(days_past))
+        print("\nAll tweets are stored in a json for easy access.")
+
     # square = num ** 2
     # data = {'square': square}
     # data = jsonify(data)
