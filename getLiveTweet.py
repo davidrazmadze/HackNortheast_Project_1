@@ -12,6 +12,8 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 time_end = time.time() + 8
+
+
 class MyStream(tweepy.StreamListener):
     def on_status(self, status):
         tweet_live = []
@@ -28,6 +30,7 @@ class MyStream(tweepy.StreamListener):
     def on_error(self, error):
         print(error)
 
+
 def store_last_tweet_in_json(passed_tweet_list):
     tweet_list = []
     for tweet in passed_tweet_list:
@@ -40,11 +43,12 @@ def store_last_tweet_in_json(passed_tweet_list):
         tweet_info['followers_count'] = tweet.user.followers_count
         tweet_list.append(tweet_info)
     file_to_open = open('HackNortheast_Project_1\\last_live_tweet.json', 'w')
-    json.dump(tweet_list, file_to_open, indent = 4, sort_keys=True)
+    json.dump(tweet_list, file_to_open, indent=4, sort_keys=True)
     file_to_open.flush()
     file_to_open.close()
 
+
 def get_live_tweets(control_ticker):
     mstream = MyStream()
-    myStreamListen = tweepy.Stream(auth = api.auth, listener = mstream)
+    myStreamListen = tweepy.Stream(auth=api.auth, listener=mstream)
     myStreamListen.filter(track=[f'{control_ticker}'])
