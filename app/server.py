@@ -1,3 +1,5 @@
+from getLiveTweet import get_live_tweets
+from getPastTweets import get_past_tweets
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -12,6 +14,8 @@ def index():
 def square():
     stockName = request.form['text']
     isLive = request.form['isLive']
+    numTweetsInput = request.form['numTweetsInput']
+    numDaysInput = request.form['numDaysInput']
 
     # num = float(request.form.get('number', 0))
     # square = num ** 2

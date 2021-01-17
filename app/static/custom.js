@@ -10,13 +10,17 @@ $(document).ready(function () {
 function submitFormPressed() {
   $("#form").on("submit", function (e) {
     var stockName = $("#stockInput").val();
-    console.log(stockName);
+    var numTweetsInput = $("#numTweetsInput").val();
+    var numDaysInput = $("#numDaysInput").val();
+
     e.preventDefault();
     $.ajax({
       url: "http://127.0.0.1:5000/square/",
       data: {
         text: stockName,
         isLive: isLive,
+        numTweetsInput: numTweetsInput,
+        numDaysInput: numDaysInput,
       },
       method: "POST",
       success: function (data) {
