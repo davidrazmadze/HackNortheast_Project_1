@@ -8,9 +8,50 @@
   <body>
     <h1>Square Calculator</h1>
     <form method="post" id="form">
-      <label for="num">Enter Number : </label>
-      <input type="text" id="num" name="number" autofocus autocomplete="off" />
-      <button>Post</button>
+      <!-- Enter stock symbol  -->
+      <input
+        id="stockInput"
+        type="text"
+        name="number"
+        placeholder="Enter stock symbol or name..."
+        size="30"
+      />
+      <!-- Radio buttons -->
+      <p>
+        <input type="radio" name="sameName" id="isLive">
+        <label for="isLive">Live tweets</label>
+        <input type="radio" name="sameName" id="isPastTweet">
+        <label for="isLive">Past tweets</label>
+      </p>
+
+      <!-- Number of tweets  -->
+      <p>
+        <input
+        id="numTweetsInput"
+        type="number"
+        name="numTweets"
+        placeholder="Number of tweets"
+        min="1"
+        max="100000000000000"
+        size="30"
+        />
+      </p>
+      <!-- Date Range  -->
+      <p>
+        <input
+        id="numDaysInput"
+        type="number"
+        name="numDays"
+        placeholder="Past days"
+        min="1"
+        max="100000000000000"
+        />
+      </p>
+
+      <!-- Submit Button  -->
+      <p>
+        <button>Post</button>
+      </p>
     </form>
     <p id="square"></p>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

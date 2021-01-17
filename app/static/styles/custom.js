@@ -1,5 +1,9 @@
 $(document).ready(function () {
   submitFormPressed();
+
+  // *TODO: Check which radio button is selected,
+  // *TODO: Hide num tweets and past days input if live tweets selected
+  // $("#isLive").prop("checked", true);
 });
 
 //* Helper functions
