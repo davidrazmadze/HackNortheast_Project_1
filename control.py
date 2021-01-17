@@ -3,7 +3,8 @@ from getPastTweets import get_past_tweets
 
 if __name__ == '__main__':
     control_ticker = input("Enter Ticker Symbol for Company: ")
-    selection = input("Type \'Live\' to see Live Tweets or type \'Past\' to see past tweets:")
+    selection = input(
+        "Type \'Live\' to see Live Tweets or type \'Past\' to see past tweets:")
     while selection == 'Live' or selection == 'Past':
         if selection == 'Live':
             print("Now viewing live tweets:")
