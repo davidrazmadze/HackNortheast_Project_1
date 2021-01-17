@@ -4,6 +4,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk.tag import pos_tag
 
 
 def sentiment_analyse(sentiment_text):
@@ -37,15 +38,28 @@ with open('tweets.json') as f:
     max_possible_score = 0
     actual_score = 0.0
 
+    i = 0
+    j = 0
+    k = 0
+    print("i: " + str(i) + " j: " + str(j) + " k: " + str(k))
+
     # Iterate over each object in json file
     for item in data:
         text = item['text']
+        lower_case = text.lower()
+        cleaned_text = lower_case.translate(
+            str.maketrans('', '', string.punctuation))
+
+        # *TODO: Tokenize the text then,
+        # *TODO: Remove noise from cleaned_text
+
+        # Variables from JSON file
         followers_count = item['followers_count']
         likes = item['likes']
         retweet_count = item['retweet_count']
-        compound = sentiment_analyse(text)['compound']
+        compound = sentiment_analyse(cleaned_text)['compound']
 
-        temp_sum = followers_count + likes + retweet_count
+        temp_sum = (followers_count+i) + (likes+j) + (retweet_count+k)
         max_possible_score += temp_sum
         actual_score += temp_sum * compound
 
