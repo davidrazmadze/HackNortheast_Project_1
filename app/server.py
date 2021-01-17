@@ -20,22 +20,24 @@ def square():
     if isLive == "true":
         print("Now viewing live tweets:")
         get_live_tweets(stockName)
+
+        # TODO: Perform sentiment analysis
+        data = {'percentage': 0.05}
+        data = jsonify(data)
+        return data
     else:
         print("Past tweets")
         tweets_to_open = request.form['numTweetsInput']
         days_past = request.form['numDaysInput']
         get_past_tweets(stockName, int(tweets_to_open), int(days_past))
 
-        print("\nAll tweets are stored in a json for easy access.")
+        # Perform sentiment analysis
+        percentage = performAnalysis('relevant_tweets.json')
 
-        finalPercentage = performAnalysis('relevant_tweets.json')
-        print("The final percentage is: " + finalPercentage)
-
-    # Perform sentiment analysis
-
-    # Return result to 'custom.js'
-
-    return "Ok"
+        # Return percentage
+        data = {'percentage': percentage}
+        data = jsonify(data)
+        return data
 
 
 if __name__ == '__main__':

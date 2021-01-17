@@ -25,9 +25,7 @@ function submitFormPressed() {
       method: "POST",
       success: function (data) {
         $("#stockInput").val("");
-        console.log(data);
-
-        console.log("Finished getting tweets for analysis");
+        $("#square").html("Percentage: " + data["percentage"] + "%");
       },
     });
   });
