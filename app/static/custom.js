@@ -26,7 +26,8 @@ function submitFormPressed() {
       success: function (data) {
         $("#stockInput").val("");
         console.log(data);
-        // $("#square").html("Square of " + number + " is " + data["square"]);
+
+        console.log("Finished getting tweets for analysis");
       },
     });
   });
