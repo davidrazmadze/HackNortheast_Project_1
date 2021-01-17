@@ -31,11 +31,11 @@ for word in final_words:
     word = WordNetLemmatizer().lemmatize(word)
     lemma_words.append(word)
 
-# 5. Print out if word is positive or negative
-# sentiment_analyse(cleaned_text)
-
+# 5. Print out if you percentage to buy the stock
 with open('tweets.json') as f:
     data = json.load(f)
+    max_possible_score = 0
+    actual_score = 0.0
 
     # Iterate over each object in json file
     for item in data:
@@ -43,9 +43,16 @@ with open('tweets.json') as f:
         followers_count = item['followers_count']
         likes = item['likes']
         retweet_count = item['retweet_count']
+        compound = sentiment_analyse(text)['compound']
 
-        print(sentiment_analyse(text))
-        print("followers: " + str(followers_count))
-        print("likes: " + str(likes))
-        print("retweet: " + str(retweet_count))
-        print("\n")
+        temp_sum = followers_count + likes + retweet_count
+        max_possible_score += temp_sum
+        actual_score += temp_sum * compound
+
+    # Calculate percentage
+    actual_score += max_possible_score
+    max_possible_score *= 2
+    finalPercentage = (actual_score / max_possible_score) * 100
+    finalPercentage = str(round(finalPercentage, 2))
+    print("There is a " + str(finalPercentage) +
+          "% change this stock will be a good buy")
