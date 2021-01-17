@@ -1,10 +1,6 @@
 $(document).ready(function () {
-  // submitFormPressed();
-
-  // *TODO: Check which radio button is selected,
-  // *TODO: Hide num tweets and past days input if live tweets selected
-  var x = document.getElementById("isLive").checked;
-  console.log(x);
+  submitFormPressed();
+  listenForRadioEvents();
 });
 
 //* Helper functions
@@ -22,5 +18,15 @@ function submitFormPressed() {
         $("#square").html("Square of " + number + " is " + data["square"]);
       },
     });
+  });
+}
+
+function listenForRadioEvents() {
+  $("input[name='radio']").change(function () {
+    if ($("#isLive").is(":checked")) {
+      alert("Is live");
+    } else {
+      alert("Is past tweets");
+    }
   });
 }
