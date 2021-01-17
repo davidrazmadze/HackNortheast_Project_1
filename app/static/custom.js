@@ -1,6 +1,6 @@
 $(document).ready(function () {
   submitFormPressed();
-  listenForRadioEvents();
+  displayAdditionalInputs();
 });
 
 //* Helper functions
@@ -21,12 +21,15 @@ function submitFormPressed() {
   });
 }
 
-function listenForRadioEvents() {
+function displayAdditionalInputs() {
   $("input[name='radio']").change(function () {
+    // Hides the two inputs based on radio button selected
     if ($("#isLive").is(":checked")) {
-      alert("Is live");
+      $("#numTweetsInput").hide();
+      $("#numDaysInput").hide();
     } else {
-      alert("Is past tweets");
+      $("#numTweetsInput").show();
+      $("#numDaysInput").show();
     }
   });
 }
