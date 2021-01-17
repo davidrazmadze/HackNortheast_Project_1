@@ -1,0 +1,18 @@
+30 seconds
+Introduce our selves as students from our universities (Name, Major, Role in Project)
+
+30 seconds - Ben
+Intro 
+Original idea
+Talk about how we are making predications based on what people are saying on Twitter.
+
+30 sec - Dan 
+Showcase project 
+
+1 min - David/Ben/Dan
+Explain details
+Flask
+Twitter API 
+
+30 seconds - Dan
+Outro, Improvements
